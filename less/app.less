@@ -1,0 +1,143 @@
+@import "../bower_components/fontawesome/css/font-awesome.min.css";
+@import "http://fonts.googleapis.com/css?family=Montserrat";
+
+/** VARIABLES **/
+
+@background-primary: #ecf0f1;
+@background-secondary: #fff;
+@background-tertiary: #ddd;
+
+@font-primary: #000;
+@font-secondary: #222824;
+@font-tertiary: #fff;
+
+
+body, html {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1em;
+  background-color: @background-primary;
+  color: @font-primary;
+  margin: 0;
+  padding: 0;
+}
+
+.startpage-header {
+  background-color: @background-secondary;
+  width: 100%;
+  height: 40px;
+  margin: 0 0 15px 0;
+  padding: 0;
+
+  .startpage-title {
+    margin: 0;
+    padding: 0;
+    line-height: 40px;
+    font-weight: 100;
+    font-size: 1.3em;
+    float: left;
+    display: block;
+  }
+
+  .startpage-navigation {
+    list-style: none;
+    margin: 0;
+    display: block;
+    float: right;
+    text-align: right;
+    li {
+      line-height: 40px;
+      display: inline-block;
+      margin: 0 0 0 25px;
+    }
+    a {
+      color: @font-secondary;
+      text-decoration: none;
+      &:hover {
+        color: @font-primary;
+      }
+    }
+  }
+}
+
+.inner {
+  width: 95%;
+  margin: 0 auto;
+}
+
+.news-container {
+  float: left;
+  margin: auto 50px 50px auto;
+
+  .news-headline {
+    color: @font-secondary;
+    text-transform: uppercase;
+    line-height: 35px;
+    width: 380px;
+    margin: 0;
+    padding: 0 10px 0 45px;
+    background-color: @background-secondary;
+  }
+
+  .news-logo {
+    display: block;
+    float: left;
+    width: 35px;
+    height: 35px;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+.news-list {
+  list-style: none;
+  padding: 0;
+
+  .marker {
+    color: @font-tertiary;
+    display: block;
+    float: left;
+    height: 35px;
+    width: 35px;
+    text-align: center;
+    overflow: hidden;
+    .fa {
+      width: 100%;
+      height: 100%;
+      line-height: 35px;
+      display: block;
+      font-size: 1.4em;
+      float: left;
+    }
+  }
+
+  .news-link {
+    display: block;
+    color: @font-primary;
+    text-decoration: none;
+    height: 35px;
+    line-height: 35px;
+    background: @background-secondary;
+    width: 380px;
+    padding: 0 10px;
+    overflow: hidden;
+  }
+
+  .news-item {
+    &:hover {
+      cursor: pointer;
+    }
+    &:hover, &.visited{
+      .marker .fa:first-child {
+        margin-left: -35px;
+      }
+    }
+
+    &.visited .news-link {
+      background-color: @background-tertiary;
+    }
+
+    margin-bottom: 10px;
+  }
+}
