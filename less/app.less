@@ -11,6 +11,9 @@
 @font-secondary: #222824;
 @font-tertiary: #fff;
 
+@width-news: 350px;
+@margin-news: 25px;
+
 
 body, html {
   font-family: 'Montserrat', sans-serif;
@@ -33,7 +36,7 @@ body, html {
     padding: 0;
     line-height: 40px;
     font-weight: 100;
-    font-size: 1.3em;
+    font-size: 1.25em;
     float: left;
     display: block;
   }
@@ -53,7 +56,7 @@ body, html {
       color: @font-secondary;
       text-decoration: none;
       &:hover {
-        color: @font-primary;
+        opacity: 0.8;
       }
     }
   }
@@ -66,13 +69,13 @@ body, html {
 
 .news-container {
   float: left;
-  margin: auto 50px 50px auto;
+  margin: auto @margin-news @margin-news auto;
 
   .news-headline {
     color: @font-secondary;
     text-transform: uppercase;
     line-height: 35px;
-    width: 380px;
+    width: @width-news;
     margin: 0;
     padding: 0 10px 0 45px;
     background-color: @background-secondary;
@@ -88,9 +91,16 @@ body, html {
       height: 100%;
     }
   }
+
+  &.full-width {
+    .news-headline {
+      width: 100%;
+      background-color: transparent;
+    }
+  }
 }
 
-.news-list {
+.news-list.text {
   list-style: none;
   padding: 0;
 
@@ -119,14 +129,16 @@ body, html {
     height: 35px;
     line-height: 35px;
     background: @background-secondary;
-    width: 380px;
+    width: @width-news;
     padding: 0 10px;
     overflow: hidden;
   }
 
   .news-item {
+    border: 1px solid transparent;
     &:hover {
       cursor: pointer;
+      border: 1px solid @background-tertiary;
     }
     &:hover, &.visited{
       .marker .fa:first-child {
@@ -139,5 +151,60 @@ body, html {
     }
 
     margin-bottom: 10px;
+  }
+}
+
+.full-width .news-list {
+  width: 100%;
+}
+
+.news-list.image {
+  list-style: none;
+  padding: 0;
+
+  .news-item {
+    position: relative;
+    display: block;
+    width: @width-news + 20;
+    height: @width-news + 20;
+    float: left;
+    margin: 0 @margin-news @margin-news @margin-news;
+    bacground-position: center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+    &.visited .news-title {
+      opacity: 0.4;
+      &:hover {
+        opacity: 0.9
+      }
+    }
+  }
+
+  .news-title {
+    display: table;
+    width: @width-news;
+    height: @width-news;
+    padding: 10px;
+    text-align: center;
+    background-color: @background-tertiary;
+    opacity: 0;
+    cursor: pointer;
+
+    .news-text {
+      font-size: 1.8em;
+      display: table-cell;
+      vertical-align: middle;
+      color: @font-tertiary;
+      opacity: 0;
+    }
+    &:hover {
+      opacity: 0.9;
+      .news-text {
+        opacity: 1;
+      }
+    }
   }
 }

@@ -1,8 +1,8 @@
 # RSS Feed Framework
 define ['jquery', 'render'], ($, render) ->
 
-  header = (node, template, data) ->
-    render(node, template, data, () ->)
+  header = (header) ->
+    render(header.node, header.template, header, () ->)()
 
   return {
     header: header

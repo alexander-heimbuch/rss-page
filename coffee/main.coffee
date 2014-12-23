@@ -5,7 +5,10 @@ require.config
     feed: 'js/feed'
     page: 'js/page'
     lodash: 'bower_components/lodash/dist/lodash.min'
-    render: 'js/render'
+    render: 'js/render',
+    propertyParser: 'bower_components/requirejs-plugins/src/propertyParser',
+    async: 'bower_components/requirejs-plugins/src/async',
+    google: 'bower_components/requirejs-plugins/src/goog'
 
 require ['jquery', 'feed', 'page'], ($, feed, page) ->
 
@@ -20,7 +23,7 @@ require ['jquery', 'feed', 'page'], ($, feed, page) ->
       feeds[item.url].init ->
         feeds[item.url].render()
 
-    page.header('#startpage-header', './templates/header.dust', config.header, () ->)
+    page.header config.header, () ->
 
   $(window).on 'focus', () ->
     if new Date().getTime() > applicationStart + (5 * 60 * 1000)

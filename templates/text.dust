@@ -1,5 +1,5 @@
 <span class="news-logo"><img src="{logo}"/></span><h3 style="color: {color};" class="news-headline">{title}</h3>
-<ul class="news-list">
+<ul class="news-list text">
     {#items}
         <li class="news-item {visited}" data-link="{link}">
             <span class="marker" style="background-color: {color};">

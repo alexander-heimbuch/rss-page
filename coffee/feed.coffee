@@ -1,5 +1,5 @@
 # RSS Feed Framework
-define ['jquery', 'render'], ($, render) ->
+define ['jquery', 'google!feeds,1','render'], ($, feedParser, render) ->
 
   feed = (config) ->
 
@@ -33,28 +33,28 @@ define ['jquery', 'render'], ($, render) ->
           storage.removeItem url
 
     _resolve = (cb) ->
-      $.ajax
-        url: document.location.protocol + '//ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=10&callback=?&q=' + (encodeURIComponent config.url),
-        dataType : 'json',
-        success : (data) ->
-          if !data.responseData.feed or !data.responseData.feed.entries
-            cb []
+      rssFeed = new google.feeds.Feed config.url
+      rssFeed.setNumEntries(config.count);
+      rssFeed.load (result) ->
+        if !result.feed or !result.feed.entries
+          cb []
 
-          tmpItems = []
+        feedItems = []
 
-          $.each data.responseData.feed.entries, (index, entry) ->
-            tmpItems.push
-              title: entry.title
-              link: entry.link
+        $.each result.feed.entries, (index, entry) ->
+          feedItems.push
+            title: entry.title
+            link: entry.link
+            image: $('<div></div>').html(entry.content).find('img').attr('src')
 
-          cb tmpItems
+        cb feedItems
 
     return {
       title: config.title
       url: config.url
       items: items
       init: init,
-      render: render(config.node, config.template, {items: items, title: config.title, logo: config.logo, color: config.color}, _onVisit)
+      render: render config.node, config.template, {items: items, title: config.title, logo: config.logo, color: config.color}, _onVisit
     }
 
   return feed
