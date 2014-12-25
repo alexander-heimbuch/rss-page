@@ -12,7 +12,7 @@
 @font-tertiary: #fff;
 
 @width-news: 350px;
-@margin-news: 25px;
+@margin-base: 25px;
 
 
 body, html {
@@ -43,14 +43,14 @@ body, html {
 
   .startpage-navigation {
     list-style: none;
-    margin: 0;
     display: block;
     float: right;
-    text-align: right;
+    text-align: left;
+    margin: 0 @margin-base 0 0;
     li {
       line-height: 40px;
       display: inline-block;
-      margin: 0 0 0 25px;
+      margin: 0 @margin-base 0 0;
     }
     a {
       color: @font-secondary;
@@ -63,13 +63,15 @@ body, html {
 }
 
 .inner {
-  width: 95%;
-  margin: 0 auto;
+  width: auto;
+  margin: 0 @margin-base;
+  text-align: center;
 }
 
 .news-container {
-  float: left;
-  margin: auto @margin-news @margin-news auto;
+  text-align: left;
+  display: inline-block;
+  margin: auto @margin-base @margin-base auto;
 
   .news-headline {
     color: @font-secondary;
@@ -168,7 +170,7 @@ body, html {
     width: @width-news + 20;
     height: @width-news + 20;
     float: left;
-    margin: 0 @margin-news @margin-news @margin-news;
+    margin: 0 @margin-base @margin-base @margin-base;
     bacground-position: center center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
