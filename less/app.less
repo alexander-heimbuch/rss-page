@@ -167,10 +167,11 @@ body, html {
   .news-item {
     position: relative;
     display: block;
-    width: @width-news + 20;
-    height: @width-news + 20;
+    width: @width-news/2;
+    height: @width-news/2;
+    padding: 10px;
     float: left;
-    margin: 0 @margin-base @margin-base @margin-base;
+    margin: 0 @margin-base/2 @margin-base/2 0;
     bacground-position: center center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -186,9 +187,12 @@ body, html {
   }
 
   .news-title {
+    position: absolute;
+    left: 0;
+    top: 0;
     display: table;
-    width: @width-news;
-    height: @width-news;
+    width: @width-news/2;
+    height: @width-news/2;
     padding: 10px;
     text-align: center;
     background-color: @background-tertiary;
@@ -196,10 +200,10 @@ body, html {
     cursor: pointer;
 
     .news-text {
-      font-size: 1.8em;
+      font-size: 1.2em;
       display: table-cell;
       vertical-align: middle;
-      color: @font-tertiary;
+      color: @font-primary;
       opacity: 0;
     }
     &:hover {
